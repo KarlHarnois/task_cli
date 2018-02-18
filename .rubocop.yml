@@ -1,0 +1,20 @@
+AllCops:
+  Exclude:
+    - 'spec/*_helper.rb'
+  TargetRubyVersion: 2.4
+
+Metric/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/AndOr:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
