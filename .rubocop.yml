@@ -1,6 +1,4 @@
 AllCops:
-  Exclude:
-    - 'spec/*_helper.rb'
   TargetRubyVersion: 2.4
 
 Metric/BlockLength:
