@@ -1,7 +1,6 @@
 require 'task_cli/deserializers/task_deserializer'
 require 'task_cli/formatters/task_formatter'
 require 'task_cli/api_client'
-require 'task_cli/config'
 
 class TaskCli
   def self.call(args)
@@ -23,6 +22,6 @@ class TaskCli
   end
 
   def client
-    ApiClient.new(Config.new)
+    ApiClient.new
   end
 end

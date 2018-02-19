@@ -1,34 +1,23 @@
-require 'net/http'
+require_relative 'request_builder'
 
 class TaskCli
   class ApiClient
-    def initialize(config)
-      @base_url = config.base_url
-      @username = config.username
-      @password = config.password
-    end
-
     def fetch_tasks
       get '/tasks'
+    end
+
+    def create_task(task)
+      post '/tasks', 'name' => task.name
     end
 
     private
 
     def get(path)
-      uri = URI(@base_url + path)
-      request = Net::HTTP::Get.new(uri)
-      request.basic_auth @username, @password
-      perform_request(request, uri).body
+      RequestBuilder.new(path).get
     end
 
-    def perform_request(request, uri)
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
-        http.request(request)
-      end
-    end
-
-    def headers
-      URI.encode_www_form('Authorization' => @auth_token)
+    def post(path, body)
+      RequestBuilder.new(path).post(body)
     end
   end
 end
