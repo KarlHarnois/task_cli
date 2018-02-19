@@ -6,5 +6,6 @@ Gem::Specification.new do |s|
   s.email = 'karlrivestharnois@gmail.com'
   s.homepage = 'https://github.com/KarlHarnois/task_cli'
   s.files = ['lib/task_cli.rb']
+  s.executables << 'task_cli'
   s.license = 'MIT'
 end
