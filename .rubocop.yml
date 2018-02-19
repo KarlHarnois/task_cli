@@ -5,6 +5,10 @@ Metric/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
 
+Metric/MethodLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
