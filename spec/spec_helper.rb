@@ -16,3 +16,7 @@ def stub_api(method, path)
   stub_request(method, BASE_URL + path)
     .with(headers: { 'Authorization' => 'Basic U29tZVVzZXI6U29tZVBhc3N3b3Jk' })
 end
+
+def api_request(method, path)
+  a_request(method, BASE_URL + path)
+end
