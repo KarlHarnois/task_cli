@@ -1,11 +1,17 @@
 class TaskCli
   class Config
-    attr_reader :base_url, :username, :password
+    class << self
+      def base_url
+        ENV['TASK_CLI_BASE_URL']
+      end
 
-    def initialize
-      @base_url = ENV['TASK_CLI_BASE_URL']
-      @username = ENV['TASK_CLI_USERNAME']
-      @password = ENV['TASK_CLI_PASSWORD']
+      def username
+        ENV['TASK_CLI_USERNAME']
+      end
+
+      def password
+        ENV['TASK_CLI_PASSWORD']
+      end
     end
   end
 end

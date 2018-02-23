@@ -7,7 +7,11 @@ class TaskCli
       @json = JSON.parse(json)
     end
 
-    def to_array
+    def to_item
+      Task.new(@json)
+    end
+
+    def to_list
       @json.map { |json| Task.new(json) }
     end
   end

@@ -6,7 +6,7 @@ RSpec.describe 'get Command' do
   end
 
   describe 'get' do
-    let(:output) { TaskCli.call('get') }
+    let(:output) { task_cli 'get' }
 
     it 'returns all the tasks' do
       expect(output).to eq ['<1> Configure new HHKB',

@@ -1,4 +1,14 @@
 module Fixtures
+  def self.task
+    %({
+      "id": 1,
+      "name": "Configure new HHKB",
+      "created_at": "2018-02-12T02:05:04.559Z",
+      "updated_at": "2018-02-12T02:05:12.438Z",
+      "completed_at": "2018-02-12T02:05:12.436Z"
+    })
+  end
+
   def self.tasks
     %([
       {
