@@ -8,8 +8,8 @@ class TaskCli
       TaskDeserializer.new(json).to_list
     end
 
-    def create_task(task)
-      json = post '/tasks', 'name' => task.name
+    def create_task(attributes)
+      json = post '/tasks', attributes
       TaskDeserializer.new(json).to_item
     end
 

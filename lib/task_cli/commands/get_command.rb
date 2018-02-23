@@ -3,7 +3,7 @@ require_relative '../formatters/task_formatter'
 
 class TaskCli
   class GetCommand < Command
-    name 'get'
+    kind :get
 
     def run
       tasks = client.fetch_tasks

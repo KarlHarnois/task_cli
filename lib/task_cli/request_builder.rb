@@ -26,6 +26,7 @@ class TaskCli
 
     def perform(request)
       authorize(request)
+      request[:content_type] = 'application/json'
       response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
         http.request(request)
       end
