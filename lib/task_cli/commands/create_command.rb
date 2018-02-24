@@ -2,7 +2,7 @@ require_relative '../command'
 
 class TaskCli
   class CreateCommand < Command
-    kind :create
+    name :create
 
     def run
       return missing_name_error unless argument

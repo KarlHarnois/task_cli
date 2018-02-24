@@ -8,7 +8,7 @@ RSpec.describe TaskCli::Command do
       let(:args) { ['create', '-n', '"Some name"'] }
 
       it 'returns the matching command' do
-        expect(command.kind).to eq :create
+        expect(command.name).to eq :create
       end
     end
 
@@ -16,7 +16,7 @@ RSpec.describe TaskCli::Command do
       let(:args) { ['g', '-s', 'completed'] }
 
       it 'returns the matching command' do
-        expect(command.kind).to eq :get
+        expect(command.name).to eq :get
       end
     end
   end
