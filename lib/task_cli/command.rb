@@ -28,6 +28,17 @@ class TaskCli
         define_method(:name) { value }
       end
 
+      def flag(*names)
+        define_method(:flags) do
+          @flags ||= begin
+                       names
+                         .map { |name| Flag.new(name) }
+                         .map { |f| { f.name => f.parse(@args) } }
+                         .reduce({}, :merge)
+                     end
+        end
+      end
+
       def descendants
         load_commands
         ObjectSpace.each_object(Class).select { |klass| klass < self }
