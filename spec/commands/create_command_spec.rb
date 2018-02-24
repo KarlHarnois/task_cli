@@ -6,14 +6,28 @@ RSpec.describe 'create Command' do
   end
 
   describe 'create' do
-    let!(:output) { task_cli 'create', '-n', 'Clean storage' }
+    context 'when name argument is present' do
+      let!(:output) { task_cli 'create', 'Clean storage' }
 
-    it 'sends the correct request' do
-      expect(api_request(:post, '/tasks').with(body: { 'name' => 'Clean storage' })).to have_been_made
+      it 'sends the correct request' do
+        expect(api_request(:post, '/tasks').with(body: { 'name' => 'Clean storage' })).to have_been_made
+      end
+
+      it 'returns the correct output' do
+        expect(output).to eq ['Created task:', '<1> Configure new HHKB']
+      end
     end
 
-    it 'has the correct output' do
-      expect(output).to eq ['Created task:', '<1> Configure new HHKB']
+    context 'when name argument is absent' do
+      let!(:output) { task_cli 'create' }
+
+      it 'sends no requests' do
+        expect(api_request(:post, '/tasks')).to_not have_been_made
+      end
+
+      it 'returns an error' do
+        expect(output).to eq 'Missing argument <name> in "task_cli create <name>"'
+      end
     end
   end
 end

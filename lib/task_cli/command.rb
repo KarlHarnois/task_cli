@@ -1,5 +1,4 @@
 require_relative 'api_client'
-require_relative 'argument_parser'
 
 class TaskCli
   class Command
@@ -13,7 +12,11 @@ class TaskCli
 
     def match_arguments?
       cmd = @args.first
-      kind.to_s == cmd || abbr_kind == cmd
+      name.to_s == cmd || abbr_name == cmd
+    end
+
+    def argument
+      @args[1]
     end
 
     class << self
@@ -21,16 +24,8 @@ class TaskCli
         descendants.map { |d| d.new(args) }.detect(&:match_arguments?)
       end
 
-      def kind(value)
-        define_method(:kind) { value }
-      end
-
-      def option(*opts)
-        opts.each do |option|
-          define_method(option) do
-            ArgumentParser.new(@args).find(option)
-          end
-        end
+      def name(value)
+        define_method(:name) { value }
       end
 
       def descendants
@@ -45,8 +40,8 @@ class TaskCli
 
     private
 
-    def abbr_kind
-      kind.to_s.chars.first
+    def abbr_name
+      name.to_s.chars.first
     end
   end
 end
