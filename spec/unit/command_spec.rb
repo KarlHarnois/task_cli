@@ -5,10 +5,10 @@ RSpec.describe TaskCli::Command do
     let(:command) { described_class.matching(args) }
 
     context 'when argument is a command' do
-      let(:args) { ['create', '-n', '"Some name"'] }
+      let(:args) { ['init', '-n', '"Some name"'] }
 
       it 'returns the matching command' do
-        expect(command.name).to eq :create
+        expect(command.name).to eq :init
       end
     end
 
