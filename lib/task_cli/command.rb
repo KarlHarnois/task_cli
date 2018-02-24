@@ -1,4 +1,5 @@
 require_relative 'api_client'
+require_relative 'flag_parser'
 
 class TaskCli
   class Command
@@ -26,6 +27,12 @@ class TaskCli
 
       def name(value)
         define_method(:name) { value }
+      end
+
+      def flag(*names)
+        define_method(:flags) do
+          @flags ||= FlagParser.new(names, @args).to_h
+        end
       end
 
       def descendants
