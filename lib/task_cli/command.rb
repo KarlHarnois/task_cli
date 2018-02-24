@@ -20,6 +20,14 @@ class TaskCli
       @args[1]
     end
 
+    def errors
+      @errors ||= begin
+                    err = []
+                    err << missing_argument_error if missing_argument?
+                    err
+                  end
+    end
+
     class << self
       def matching(args)
         descendants.map { |d| d.new(args) }.detect(&:match_arguments?)
@@ -27,6 +35,10 @@ class TaskCli
 
       def name(value)
         define_method(:name) { value }
+      end
+
+      def argument(name)
+        define_method(:argument_name) { name }
       end
 
       def flag(*names)
@@ -49,6 +61,15 @@ class TaskCli
 
     def abbr_name
       name.to_s.chars.first
+    end
+
+    def missing_argument?
+      return false unless respond_to? :argument_name
+      argument.nil?
+    end
+
+    def missing_argument_error
+      "Missing argument <#{argument_name}> in \"task_cli #{name} <#{argument_name}>\""
     end
   end
 end

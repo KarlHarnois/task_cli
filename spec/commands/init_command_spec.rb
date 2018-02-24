@@ -25,7 +25,7 @@ RSpec.describe 'init Command' do
     end
 
     it 'returns an error' do
-      expect(output).to eq 'Missing argument <name> in "task_cli init <name>"'
+      expect(output).to eq ['Missing argument <name> in "task_cli init <name>"']
     end
   end
 end

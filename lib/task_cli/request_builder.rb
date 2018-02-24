@@ -18,6 +18,12 @@ class TaskCli
       perform(request)
     end
 
+    def patch(body)
+      request = Net::HTTP::Patch.new(uri)
+      request.body = body.to_json
+      perform(request)
+    end
+
     private
 
     def uri
