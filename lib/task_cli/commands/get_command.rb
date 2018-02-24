@@ -6,7 +6,7 @@ class TaskCli
     name :get
 
     def run
-      tasks = client.fetch_tasks
+      tasks = client.fetch_tasks(state: :open)
       TaskFormatter.new.format_list(tasks)
     end
   end

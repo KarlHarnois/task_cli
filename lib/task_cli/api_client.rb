@@ -3,8 +3,9 @@ require_relative 'deserializers/task_deserializer'
 
 class TaskCli
   class ApiClient
-    def fetch_tasks
-      json = get '/tasks'
+    def fetch_tasks(state: nil)
+      path = state ? "/tasks?state=#{state}" : '/tasks'
+      json = get path
       TaskDeserializer.new(json).to_list
     end
 
