@@ -20,4 +20,13 @@ RSpec.describe TaskCli::Command do
       end
     end
   end
+
+  describe '#argument' do
+    subject { described_class.new(args) }
+    let(:args) { ['build', 'house', '--color', 'blue'] }
+
+    it 'returns the correct value' do
+      expect(subject.argument).to eq 'house'
+    end
+  end
 end

@@ -16,6 +16,10 @@ class TaskCli
       kind.to_s == cmd || abbr_kind == cmd
     end
 
+    def argument
+      @args[1]
+    end
+
     class << self
       def matching(args)
         descendants.map { |d| d.new(args) }.detect(&:match_arguments?)
