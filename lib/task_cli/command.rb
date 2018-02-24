@@ -1,5 +1,4 @@
 require_relative 'api_client'
-require_relative 'argument_parser'
 
 class TaskCli
   class Command
@@ -27,14 +26,6 @@ class TaskCli
 
       def kind(value)
         define_method(:kind) { value }
-      end
-
-      def option(*opts)
-        opts.each do |option|
-          define_method(option) do
-            ArgumentParser.new(@args).find(option)
-          end
-        end
       end
 
       def descendants
