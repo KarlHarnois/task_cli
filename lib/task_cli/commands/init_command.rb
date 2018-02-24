@@ -1,8 +1,8 @@
 require_relative '../command'
 
 class TaskCli
-  class CreateCommand < Command
-    name :create
+  class InitCommand < Command
+    name :init
 
     def run
       return missing_name_error unless argument
@@ -13,7 +13,7 @@ class TaskCli
     private
 
     def missing_name_error
-      'Missing argument <name> in "task_cli create <name>"'
+      'Missing argument <name> in "task_cli init <name>"'
     end
   end
 end
