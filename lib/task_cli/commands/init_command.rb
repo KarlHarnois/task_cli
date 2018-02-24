@@ -1,4 +1,5 @@
 require_relative '../command'
+require_relative '../formatters/task_formatter'
 
 class TaskCli
   class InitCommand < Command
@@ -8,7 +9,13 @@ class TaskCli
     def run
       return errors unless errors.empty?
       response = client.create_task(name: argument)
-      ['Created task:', "<#{response.id}> #{response.name}"]
+      ['Created task:', format_task(response)]
+    end
+
+    private
+
+    def format_task(t)
+      TaskFormatter.new.format(t)
     end
   end
 end
