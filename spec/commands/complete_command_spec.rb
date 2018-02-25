@@ -9,7 +9,7 @@ RSpec.describe 'complete Command' do
   describe 'id argument' do
     context 'when absent' do
       it 'returns the correct error' do
-        expect(task_cli('complete')).to eq ['Missing argument <id> in "task_cli complete <id>"']
+        expect(task_cli('complete')).to eq ["Missing argument [ID] in 'task_cli complete [ID]'"]
       end
     end
 
