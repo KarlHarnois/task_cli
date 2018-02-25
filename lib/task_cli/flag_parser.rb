@@ -1,3 +1,5 @@
+require_relative 'flag'
+
 class TaskCli
   class FlagParser
     def initialize(flags, args)
