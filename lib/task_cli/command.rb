@@ -30,7 +30,10 @@ class TaskCli
 
     class << self
       def matching(args)
-        descendants.map { |d| d.new(args) }.detect(&:match_arguments?)
+        commands = descendants.map { |d| d.new(args) }
+        match = commands.detect(&:match_arguments?)
+        return HelpCommand.new(args) unless match
+        match
       end
 
       def name(value)
