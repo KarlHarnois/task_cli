@@ -9,7 +9,7 @@ ENV['TASK_CLI_USERNAME'] = 'SomeUser'
 ENV['TASK_CLI_PASSWORD'] = 'SomePassword'
 
 def task_cli(*args)
-  TaskCli.call(args)
+  TaskCli.call(args).uncolorize
 end
 
 def stub_api(method, path)
@@ -19,4 +19,10 @@ end
 
 def api_request(method, path)
   a_request(method, BASE_URL + path)
+end
+
+class Array
+  def uncolorize
+    map(&:uncolorize)
+  end
 end
