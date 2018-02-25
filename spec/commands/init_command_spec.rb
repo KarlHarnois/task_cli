@@ -13,7 +13,7 @@ RSpec.describe 'init Command' do
     end
 
     it 'returns the correct output' do
-      expect(output).to eq ['Created task:', '<1> Configure new HHKB']
+      expect(output).to eq ['Created task:', '[1] Configure new HHKB']
     end
   end
 
