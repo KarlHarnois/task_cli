@@ -69,7 +69,8 @@ class TaskCli
     end
 
     def missing_argument_error
-      "Missing argument <#{argument_name}> in \"task_cli #{name} <#{argument_name}>\""
+      arg = "[#{argument_name}]".upcase.apply_color(:argument)
+      "Missing argument #{arg} in " + "'task_cli #{name} #{arg}'"
     end
   end
 end

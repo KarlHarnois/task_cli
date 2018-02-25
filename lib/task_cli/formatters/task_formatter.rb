@@ -1,7 +1,7 @@
 class TaskCli
   class TaskFormatter
     def format(task)
-      id = "[#{task.id}]".colorize(:light_black)
+      id = "[#{task.id}]".apply_color(:argument)
       "#{id} #{task.name}"
     end
 

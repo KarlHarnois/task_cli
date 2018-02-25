@@ -1,5 +1,5 @@
 require 'task_cli/command'
-require 'colorize'
+require 'task_cli/string'
 
 class TaskCli
   def self.call(args)
