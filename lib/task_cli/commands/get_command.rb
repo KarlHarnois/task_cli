@@ -3,6 +3,7 @@ require_relative '../formatters/task_formatter'
 
 class TaskCli
   class GetCommand < Command
+    description 'fetch and display tasks'
     name :get
     flag :all
 

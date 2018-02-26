@@ -17,6 +17,10 @@ class TaskCli
       args[1]
     end
 
+    def description
+      nil
+    end
+
     def errors
       @errors ||= begin
                     err = []
@@ -43,6 +47,10 @@ class TaskCli
 
       def argument(name)
         define_method(:argument_name) { name }
+      end
+
+      def description(value)
+        define_method(:description) { value }
       end
 
       def flag(*names)

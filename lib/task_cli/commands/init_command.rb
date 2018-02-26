@@ -2,6 +2,7 @@ require_relative '../command'
 
 class TaskCli
   class InitCommand < Command
+    description 'create task'
     name :init
     argument :name
 
