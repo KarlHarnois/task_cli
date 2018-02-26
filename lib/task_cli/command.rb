@@ -3,7 +3,9 @@ require_relative 'flag_parser'
 
 class TaskCli
   class Command
-    def initialize(args)
+    attr_accessor :args
+
+    def initialize(args = [])
       @args = args
     end
 
@@ -11,13 +13,8 @@ class TaskCli
       @client ||= ApiClient.new
     end
 
-    def match_arguments?
-      cmd = @args.first
-      name.to_s == cmd || abbr_name == cmd
-    end
-
     def argument
-      @args[1]
+      args[1]
     end
 
     def errors
@@ -28,10 +25,14 @@ class TaskCli
                   end
     end
 
+    def match_args?
+      cmd = args.first
+      name.to_s == cmd || abbr_name == cmd
+    end
+
     class << self
       def matching(args)
-        commands = descendants.map { |d| d.new(args) }
-        match = commands.detect(&:match_arguments?)
+        match = all.each { |cmd| cmd.args = args }.detect(&:match_args?)
         return HelpCommand.new(args) unless match
         match
       end
@@ -46,8 +47,12 @@ class TaskCli
 
       def flag(*names)
         define_method(:flags) do
-          @flags ||= FlagParser.new(names, @args).to_h
+          @flags ||= FlagParser.new(names, args).to_h
         end
+      end
+
+      def all
+        descendants.map(&:new)
       end
 
       def descendants
