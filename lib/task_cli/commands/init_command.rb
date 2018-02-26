@@ -9,7 +9,7 @@ class TaskCli
     def run
       return errors unless errors.empty?
       task = client.create_task(name: argument)
-      ['Created task:', task.to_s]
+      ["Created task: #{task.name}"]
     end
   end
 end

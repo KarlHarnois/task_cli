@@ -10,7 +10,7 @@ class TaskCli
     def run
       return errors unless errors.empty?
       task = client.update_task(argument, completed_at: Time.now.to_s)
-      ['Completed task:', task.to_s]
+      ["Completed task: #{task.name}"]
     end
   end
 end

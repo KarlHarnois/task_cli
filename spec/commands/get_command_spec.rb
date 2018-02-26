@@ -3,9 +3,9 @@ require 'spec_helper'
 RSpec.describe 'get Command' do
   let(:expected_output) do
     [
-      '[1] Configure new HHKB',
-      '[2] Create dotfiles repo',
-      '[3] Write Cli for task management api'
+      '1   Configure new HHKB',
+      '2   Create dotfiles repo',
+      '3   Write Cli for task management api'
     ]
   end
 
