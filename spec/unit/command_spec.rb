@@ -19,6 +19,14 @@ RSpec.describe TaskCli::Command do
         expect(command.name).to eq :get
       end
     end
+
+    context 'when argument is not a command' do
+      let(:args) { [] }
+
+      it 'returns the help command' do
+        expect(command.name).to eq :help
+      end
+    end
   end
 
   describe '#argument' do

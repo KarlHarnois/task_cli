@@ -3,6 +3,7 @@ require_relative '../command'
 
 class TaskCli
   class CompleteCommand < Command
+    description 'mark task as completed'
     name :complete
     argument :id
 
