@@ -7,6 +7,11 @@ class TaskCli
     def initialize(hash)
       @id = hash[:id] || hash['id']
       @name = hash[:name] || hash['name']
+      @completed_at = hash[:completed_at] || hash['completed_at']
+    end
+
+    def completed?
+      @completed_at != nil
     end
 
     def to_s

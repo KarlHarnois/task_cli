@@ -17,7 +17,7 @@ RSpec.describe 'complete Command' do
       let!(:output) { task_cli 'complete', '1' }
 
       it 'returns the correct output' do
-        expect(output).to eq ['Completed task:', '[1] Configure new HHKB']
+        expect(output).to eq ['Completed task: Configure new HHKB']
       end
 
       it 'sends the correct request' do
